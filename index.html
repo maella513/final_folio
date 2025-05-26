@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio – Maella Makoulo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #4f46e5;
+      --accent-color: #06b6d4;
+      --bg-color: #f6f8fa;
+      --text-color: #22223b;
+      --card-bg: #fff;
+      --shadow: 0 2px 8px rgba(0,0,0,0.07);
+      --transition: 0.2s;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #181926;
+        --text-color: #f6f8fa;
+        --card-bg: #22223b;
+        --shadow: 0 2px 8px rgba(0,0,0,0.25);
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background var(--transition), color var(--transition);
+    }
+    header {
+      background: var(--main-color);
+      color: #fff;
+      padding: 2rem 0 1rem 0;
+      text-align: center;
+      position: relative;
+    }
+    .profile-pic {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--accent-color);
+      margin-bottom: 1rem;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    header h1 { font-size: 2.2rem; margin-bottom: 0.4rem; }
+    header h2 { font-weight: 400; font-size: 1.2rem; margin-bottom: 0.5rem; }
+    header p { font-size: 1.05rem; }
+    nav {
+      margin-top: 1rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+      transition: color var(--transition);
+      font-size: 1rem;
+    }
+    nav a:hover { color: var(--accent-color);}
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 0.8s;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    h2 {
+      color: var(--main-color);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      border-left: 4px solid var(--accent-color);
+      padding-left: 0.5rem;
+    }
+    ul, .timeline, .projects-grid {
+      list-style: none;
+      padding: 0;
+    }
+    .skills-list, .languages-list, .interests-list, .education-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .skills-list li, .languages-list li, .interests-list li, .education-list li {
+      background: var(--card-bg);
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      transition: background var(--transition), color var(--transition);
+    }
+    .timeline-item {
+      background: var(--card-bg);
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: background var(--transition), color var(--transition);
+    }
+    .timeline-item span {
+      font-size: 0.95rem;
+      color: var(--accent-color);
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      color: var(--main-color);
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.3rem;
+    }
+    .project-card {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+    }
+    .project-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 4px 16px rgba(79,70,229,0.13);
+    }
+    .contact-list li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
+      transition: background var(--transition);
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem;
+    }
+    .btn:hover {
+      background: var(--main-color);
+    }
+    .socials {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .socials a {
+      display: inline-block;
+      margin: 0 0.3rem;
+      color: var(--accent-color);
+      font-size: 1.4rem;
+      transition: color var(--transition);
+      vertical-align: middle;
+    }
+    .socials a:hover { color: var(--main-color);}
+    .about {
+      margin-bottom: 1.5rem;
+      font-size: 1.08rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1.2rem;
+    }
+    @media (max-width: 650px) {
+      header h1 { font-size: 1.3rem; }
+      .container { padding: 0 0.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-list, .languages-list, .interests-list, .education-list { flex-direction: column; gap: 0.5rem;}
+      .profile-pic { width: 80px; height: 80px;}
+    }
+  </style>
+  <!-- Icônes réseaux sociaux -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <!-- Remplace le lien ci-dessous par ta photo si tu veux -->
+    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maella Makoulo" class="profile-pic">
+    <h1>Maella Makoulo</h1>
+    <h2>Étudiante ingénieure en informatique</h2>
+    <p>
+      À la recherche d’une alternance en Systèmes d’Information (2 ans)<br>
+      Rythme : 2 semaines école / 2 semaines entreprise
+    </p>
+    <nav>
+      <a href="#competences">Compétences</a>
+      <a href="#experiences">Expériences</a>
+      <a href="#projets">Projets</a>
+      <a href="#formations">Formations</a>
+      <a href="#langues">Langues</a>
+      <a href="#interets">Centres d’intérêt</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="socials">
+      <a href="https://github.com/Maella513" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <!-- Ajoute ton LinkedIn si tu veux -->
+      <!-- <a href="https://linkedin.com/in/TON-LINKEDIN" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a> -->
+    </div>
+    <a href="essai.pdf" class="btn" download>Télécharger mon CV</a>
+  </header>
+
+  <div class="container">
+    <section class="about">
+      <p>
+        Étudiante en troisième année de cycle ingénieur à l’ESEO (Vélizy-Villacoublay), je recherche une alternance en Systèmes d’Information afin de mettre à profit mon intérêt pour l’IA, la Data et le design, en alliant technique et créativité.
+      </p>
+    </section>
+
+    <section id="competences">
+      <h2>Compétences Techniques</h2>
+      <ul class="skills-list">
+        <li><strong>Langages :</strong> Python, SQL, R, Java, C/C++, HTML, JS, PHP</li>
+        <li><strong>Librairies/IA :</strong> Pandas, NumPy, Matplotlib, Scikit-learn</li>
+        <li><strong>Outils :</strong> Git, Linux, PyCharm, Access, MATLAB, Docker, Cisco Packet Tracer</li>
+        <li><strong>Informatique générale :</strong> Maintenance & architecture des systèmes, automatisation Python, conception UI (Java, Access)</li>
+        <li><strong>Data :</strong> Analyse et traitement de datasets, conception d’algorithmes de machine learning, visualisation (Matplotlib, Excel, Power BI)</li>
+      </ul>
+    </section>
+
+    <section id="experiences">
+      <h2>Expériences professionnelles</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span>Avril 2024 – Mai 2024</span>
+          <h3>Stagiaire développeuse base de données – Mairie de Bafoussam</h3>
+          <ul>
+            <li>Conception d’une base de données MySQL pour structurer et centraliser les documents</li>
+            <li>Développement d’une interface utilisateur simple (HTML, CSS, PHP)</li>
+            <li>Mise en place d’un système de gestion documentaire améliorant l’accès aux fichiers</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <span>Sept. 2022 – Mai 2024</span>
+          <h3>Data Analyst junior (CDI) – Junior Entreprise Cameroun</h3>
+          <ul>
+            <li>Préparation et structuration des données (Python, MySQL, Apache Spark)</li>
+            <li>Analyse et exploration des données, extraction d’insights</li>
+            <li>Création de dashboards interactifs avec Power BI</li>
+            <li>Rédaction de rapports stratégiques adaptés aux besoins clients</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <span>Juin 2023 – Juil. 2023</span>
+          <h3>Technicienne du son (Stage étudiant) – CRTV, Yaoundé</h3>
+          <ul>
+            <li>Installation et configuration du matériel audio pour des évènements en direct</li>
+            <li>Enregistrement, montage et mixage d’émissions à l’aide de logiciels de post-production</li>
+            <li>Collaboration avec les équipes techniques pour garantir la qualité sonore</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projets">
+      <h2>Projets</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Site pour une boulangerie (2024-2025)</h3>
+          <p>Création d’un site web dynamique (HTML, CSS, JS, PHP), gestion des commandes et produits en temps réel, hébergement et mise en ligne.</p>
+        </div>
+        <div class="project-card">
+          <h3>POO Java – Les Aventuriers du Rail (2025)</h3>
+          <p>Programmation orientée objet d’un jeu de plateau en Java.</p>
+        </div>
+        <div class="project-card">
+          <h3>Big Data – Analyse audiences radio (2024)</h3>
+          <p>Analyse des audiences télé et radio avec Apache Spark, Power BI, MLFlow et Docker.</p>
+        </div>
+        <div class="project-card">
+          <h3>Gestion de bibliothèque (2023)</h3>
+          <p>Développement d’un logiciel en Python avec base SQLite pour gérer les emprunts et retours de livres.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="formations">
+      <h2>Diplômes & Formations</h2>
+      <ul class="education-list">
+        <li>
+          <strong>Diplôme d’ingénieur généraliste en informatique</strong><br>
+          ESEO, Vélizy-Villacoublay
+        </li>
+        <li>
+          <strong>Certification MOOC gestion de projet</strong><br>
+          Université de Lille (en ligne)
+        </li>
+        <li>
+          <strong>Prépa MPSI</strong><br>
+          Prépas Internationales, Yaoundé (maths, physique, info, SI)
+        </li>
+        <li>
+          <strong>Baccalauréat C</strong><br>
+          Collège adventiste de Yaoundé
+        </li>
+      </ul>
+    </section>
+
+    <section id="langues">
+      <h2>Langues</h2>
+      <ul class="languages-list">
+        <li>Français : Langue Maternelle</li>
+        <li>Anglais : Courant</li>
+        <li>Chinois : Débutante</li>
+      </ul>
+    </section>
+
+    <section id="interets">
+      <h2>Centres d’intérêt</h2>
+      <ul class="interests-list">
+        <li>Lecture & podcasts</li>
+        <li>Webinars tech</li>
+        <li>Bénévolat</li>
+        <li>Mangas</li>
+        <li>Fitness</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><strong>Email :</strong> <a href="mailto:lucrecendzobou@gmail.com">lucrecendzobou@gmail.com</a></li>
+        <li><strong>Téléphone :</strong> 07 43 28 67 75</li>
+        <li><strong>Localisation :</strong> Sannois</li>
+        <li><strong>GitHub :</strong> <a href="https://github.com/Maella513" target="_blank">Maella513</a></li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
